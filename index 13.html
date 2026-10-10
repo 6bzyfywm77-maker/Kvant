@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kvant kompyuterlari — hisoblashning yangi davri</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1a2b;--teal:#3dd6c6;--amber:#f4a83a;--lbg:#f4f1ea;--lfg:#0f1a2b;--lmute:#4d586b;--lcard:#fff;--lline:#ddd8cb;--lteal:#0b7a6f;--lamber:#b4600a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--lbg:#142038;--lfg:#f4f1ea;--lmute:#a9b4c8;--lcard:#1b2b49;--lline:#2a3d63;--lteal:#3dd6c6;--lamber:#f4a83a}}
+:root[data-theme="dark"]{--lbg:#142038;--lfg:#f4f1ea;--lmute:#a9b4c8;--lcard:#1b2b49;--lline:#2a3d63;--lteal:#3dd6c6;--lamber:#f4a83a}
+*,*:before,*:after{box-sizing:border-box}
+html{height:100%;scroll-snap-type:y proximity;-webkit-text-size-adjust:100%}
+@media(min-width:901px) and (min-height:600px){html{scroll-snap-type:y mandatory}}
+body{margin:0;background:var(--ink);font:19px/1.6 "Source Serif 4",Georgia,serif;overflow-x:hidden}
+h1,h2,b,th,button,.st,.yil{font-family:"Bricolage Grotesque","Segoe UI",Arial,sans-serif}
+.s{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:center;background:var(--bg);color:var(--fg);
+padding:calc(56px + env(safe-area-inset-top,0px)) clamp(48px,8vw,140px) calc(64px + env(safe-area-inset-bottom,0px)) clamp(24px,7vw,120px)}
+.d{--bg:var(--ink);--fg:#f4f1ea;--mute:#a9b4c8;--card:#172640;--line:#2a3d63;--a:var(--teal);--b:var(--amber)}
+.l{--bg:var(--lbg);--fg:var(--lfg);--mute:var(--lmute);--card:var(--lcard);--line:var(--lline);--a:var(--lteal);--b:var(--lamber)}
+.t{--bg:var(--teal);--fg:#0f1a2b;--mute:#0f1a2b;--card:#fff;--line:#0f1a2b;--a:#0f1a2b;--b:#0f1a2b}
+h2{font-size:clamp(34px,5.4vw,88px);line-height:1;margin:0 0 .45em;font-weight:800;letter-spacing:-.03em;max-width:16ch}
+.lead{font-size:clamp(18px,1.7vw,26px);color:var(--mute);max-width:44ch;margin:0 0 28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,2.2vw,34px)}
+.c b{display:block;font-weight:800;font-size:clamp(22px,2vw,31px);line-height:1.15;color:var(--a);margin-bottom:8px}
+.c.h b{color:var(--b)}
+.c p{margin:0;font-size:clamp(17px,1.45vw,22px);line-height:1.5}
+.st{font-weight:800;font-size:clamp(44px,5.4vw,84px);line-height:1;color:var(--b);margin-bottom:12px}
+.sc{overflow-x:auto}
+.tb{width:100%;border-collapse:collapse;font-size:clamp(17px,1.6vw,24px)}
+.tb th,.tb td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line)}
+.tb th{color:var(--a);border-bottom:3px solid var(--a);font-size:.8em}
+.tl{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:28px;border-top:4px solid var(--a)}
+.tl li{position:relative;padding-top:26px;font-size:clamp(17px,1.5vw,22px);line-height:1.5}
+.tl li:before{content:"";position:absolute;left:0;top:-14px;width:24px;height:24px;border-radius:50%;background:var(--bg);border:5px solid var(--b)}
+.yil{display:block;font-weight:800;font-size:clamp(28px,3vw,46px);margin-bottom:6px;color:var(--fg)}
+.big{font-size:clamp(28px,4.2vw,64px);line-height:1.2;font-weight:700;margin:0;max-width:24ch;font-family:"Bricolage Grotesque",Arial,sans-serif;letter-spacing:-.02em}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+.hero h1{font-size:clamp(46px,7.6vw,132px);line-height:.96;margin:0 0 20px;font-weight:800;letter-spacing:-.04em}
+.hero .sub{font-size:clamp(20px,2vw,30px);color:var(--mute);margin:0 0 22px}
+.ket{font:600 clamp(18px,1.8vw,26px) "Bricolage Grotesque",Arial,sans-serif;color:var(--b);margin:0}
+.lab{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,2.4vw,34px)}
+.lab h3{margin:0 0 6px;font:800 clamp(20px,1.8vw,26px) "Bricolage Grotesque",Arial,sans-serif}
+.lab p{margin:0 0 18px;font-size:16px;line-height:1.5;color:var(--mute)}
+.row{display:grid;grid-template-columns:24px 1fr 48px;align-items:center;gap:12px;margin-bottom:12px;font:700 17px "Bricolage Grotesque",Arial,sans-serif}
+.track{height:22px;background:var(--ink);border-radius:11px;overflow:hidden}
+.fill{height:100%;width:0;transition:width .4s}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+button{cursor:pointer;color:inherit}
+.btns button{font-size:15px;font-weight:700;padding:11px 16px;border-radius:9px;border:1px solid #4a5f88;background:transparent;color:#f4f1ea}
+.btns .main{background:var(--teal);border-color:var(--teal);color:#0f1a2b}
+.out{margin-top:14px;min-height:26px;font:600 15px "Bricolage Grotesque",Arial,sans-serif;color:var(--mute)}
+button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--teal);z-index:20;transition:width .3s}
+.dots{position:fixed;right:clamp(8px,1.8vw,26px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:20}
+.dots button{position:relative;width:11px;height:11px;padding:0;border-radius:50%;border:2px solid #8a96ab;background:transparent}
+.dots button:after{content:"";position:absolute;inset:-8px}
+.dots button.on{background:var(--teal);border-color:var(--teal);transform:scale(1.35)}
+.cnt{position:fixed;left:clamp(12px,2vw,28px);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;background:rgba(15,26,43,.92);color:#f4f1ea;border:1px solid #2a3d63;border-radius:30px;padding:3px 6px;z-index:20;font:700 14px "Bricolage Grotesque",Arial,sans-serif}
+.cnt button{border:0;background:transparent;font-size:20px;width:34px;height:34px;color:#f4f1ea;line-height:1}
+.cnt span{min-width:54px;text-align:center}
+@media(max-width:900px){
+.hero,.tl{grid-template-columns:1fr}
+.tl{border-top:0;border-left:4px solid var(--a);padding-left:0;gap:20px}
+.tl li{padding:0 0 0 24px}.tl li:before{left:-14px;top:4px}
+.s{padding-right:34px;justify-content:flex-start;padding-top:calc(48px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.fill,.bar{transition:none}}
+.ts{display:inline-block;align-self:flex-start;background:#dfeaff;color:#2358c4;font:700 clamp(15px,1.3vw,19px) "Bricolage Grotesque",Arial,sans-serif;padding:3px 11px;border-radius:7px;margin-bottom:18px}
+h2{font-size:clamp(30px,4.4vw,72px);max-width:22ch}
+.ag{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.ag a{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:8px 12px;border-radius:9px;color:var(--fg);text-decoration:none;font:600 clamp(15px,1.25vw,19px)/1.3 "Bricolage Grotesque",Arial,sans-serif}
+.ag a:hover,.ag a:focus-visible{background:var(--card)}
+.ag i{font-style:normal;color:var(--a)}
+.hero .cards{margin-top:6px}
+.s{position:relative;overflow:hidden}
+.s>*{position:relative;z-index:1}
+#cv{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.d{background:radial-gradient(900px 520px at 88% 8%,rgba(61,214,198,.16),transparent 62%),radial-gradient(760px 460px at 4% 100%,rgba(244,168,58,.11),transparent 60%),var(--bg)}
+.l{background:radial-gradient(color-mix(in srgb,var(--fg) 10%,transparent) 1px,transparent 1.5px) 0 0/28px 28px,var(--bg)}
+.s[data-n]:before{content:attr(data-n);position:absolute;right:clamp(36px,7vw,120px);bottom:-.12em;z-index:0;font:800 clamp(150px,24vw,360px)/1 "Bricolage Grotesque",Arial,sans-serif;color:var(--fg);opacity:.055;pointer-events:none}
+h2:after{content:"";display:block;width:90px;height:7px;border-radius:4px;margin-top:.3em;background:linear-gradient(90deg,var(--a),var(--b))}
+.c{border-top:5px solid var(--a);box-shadow:0 18px 40px -26px rgba(15,26,43,.55);transition:transform .25s,box-shadow .25s}
+.c.h{border-top-color:var(--b)}
+.c:hover{transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(15,26,43,.6)}
+.d .c{background:linear-gradient(160deg,#1b2f50,#142038);box-shadow:0 18px 44px -26px #000}
+.hero h1{background:linear-gradient(100deg,#f4f1ea 35%,var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.kir{font-size:clamp(17px,1.5vw,23px);line-height:1.6;color:#c4cde0;max-width:46ch;margin:0 0 22px}
+.kir b{color:#fff;font-family:"Bricolage Grotesque",Arial,sans-serif}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 26px}
+.stat{border:1px solid #2f4570;border-radius:14px;padding:12px 18px;background:rgba(23,38,64,.65);backdrop-filter:blur(6px)}
+.stat strong{display:block;font:800 clamp(26px,2.6vw,40px)/1 "Bricolage Grotesque",Arial,sans-serif;color:var(--teal)}
+.stat span{font-size:14px;color:#a9b4c8}
+.go{font:800 18px "Bricolage Grotesque",Arial,sans-serif;background:var(--teal);color:#0f1a2b;border:0;border-radius:12px;padding:14px 30px;box-shadow:0 12px 30px -10px rgba(61,214,198,.7)}
+.go:hover{filter:brightness(1.1)}
+.agp{background:rgba(15,26,43,.72);border:1px solid #2f4570;border-radius:20px;padding:18px 14px;backdrop-filter:blur(10px)}
+.agp h3{margin:0 0 8px 12px;font:800 21px "Bricolage Grotesque",Arial,sans-serif;color:#fff}
+.s.on .c,.s.on .tb tr,.s.on .tl li,.s.on .lab{animation:up .65s cubic-bezier(.2,.7,.2,1) backwards}
+.s.on .c:nth-child(2),.s.on .tl li:nth-child(2),.s.on .tb tr:nth-child(2){animation-delay:.12s}
+.s.on .c:nth-child(3),.s.on .tl li:nth-child(3),.s.on .tb tr:nth-child(3){animation-delay:.24s}
+.s.on .c:nth-child(4){animation-delay:.36s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.s.on .c,.s.on .tb tr,.s.on .tl li,.s.on .lab{animation:none}.c{transition:none}}
+.lab{background:linear-gradient(160deg,#1b2f50,#142038);color:#f4f1ea;border:1px solid #2f4570;--mute:#a9b4c8;box-shadow:0 30px 60px -30px rgba(15,26,43,.7)}
+.bl{display:block;width:min(190px,44vw);margin:0 auto 14px}
+.exp{margin-top:26px}
+.cap{margin:0 0 12px;font:600 clamp(14px,1.2vw,18px) "Bricolage Grotesque",Arial,sans-serif;color:var(--mute)}
+.ebars{display:flex;align-items:flex-end;gap:clamp(6px,1vw,14px);height:clamp(110px,19vh,200px);padding-top:20px}
+.ebars i{flex:1;height:var(--h);min-height:6px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--b),var(--a));position:relative;transform-origin:bottom}
+.ebars u{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:3px;text-decoration:none;white-space:nowrap;font:700 12px "Bricolage Grotesque",Arial,sans-serif;color:var(--mute)}
+.s.on .ebars i{animation:grow .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--d)*70ms + .3s)}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+.cmp{display:flex;flex-wrap:wrap;gap:16px;margin-top:22px}
+.cmp>div{flex:1 1 220px;border:1px solid var(--line);border-radius:16px;padding:18px 22px;background:var(--card)}
+.cmp span{display:block;font-size:clamp(14px,1.2vw,18px);color:var(--mute)}
+.cmp strong{display:block;font:800 clamp(30px,4vw,60px)/1.1 "Bricolage Grotesque",Arial,sans-serif;color:var(--b)}
+.cmp .cold strong{color:var(--a)}
+.tp{display:block;width:100%;max-width:680px;height:auto;margin-top:24px}
+@media(max-width:900px){.ebars u:nth-child(odd){display:none}.ebars u{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.s.on .ebars i{animation:none}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.hero .cards{grid-template-columns:1fr}
+.c{border-top:0;border-left:7px solid var(--a);border-radius:16px;padding:clamp(16px,1.7vw,26px) clamp(20px,2vw,32px)}
+.c.h{border-left-color:var(--b)}
+.c b{font-size:clamp(23px,2.3vw,36px);margin-bottom:6px}
+.c p{font-size:clamp(17px,1.55vw,24px);line-height:1.45}
+.cmp strong{font-size:clamp(26px,2.8vw,44px)}
+@media(min-width:901px){
+.s:not(.hero){display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:clamp(40px,6vw,110px);grid-auto-rows:min-content;align-content:center;align-items:start}
+.s:not(.hero)>h2{grid-column:1;grid-row:1/span 8;align-self:center;max-width:none;font-size:clamp(34px,4.3vw,76px)}
+.s:not(.hero)>:not(h2){grid-column:2}
+.s:not(.hero) .cards{grid-template-columns:1fr;gap:14px}
+.s:not(.hero) .exp{margin-top:20px}
+}
+@media(max-width:900px){}
+.ket{margin-bottom:18px!important}
+.ebars{padding-top:30px}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<nav class="dots" id="dots" aria-label="Slaydlar"></nav>
+<div class="cnt"><button id="pv" aria-label="Oldingi">‹</button><span id="no">1 / 15</span><button id="nx" aria-label="Keyingi">›</button><button id="fs" aria-label="Toʻliq ekran" title="Toʻliq ekran (F)">⛶</button></div>
+
+<section class="s d hero" id="top" data-t="Kirish"><canvas id="cv" aria-hidden="true"></canvas>
+<div><h1>Kvant kompyuterlari</h1><p class="sub">Hisoblashning yangi davri</p><p class="ket">|ψ⟩ = α|0⟩ + β|1⟩</p>
+<p class="kir"><b>Kvant kompyuteri</b> — maʼlumotni oddiy bit bilan emas, <b>kubit</b> bilan qayta ishlaydigan kompyuter. U kvant mexanikasi qonunlariga tayanadi: superpozitsiya va chigallik tufayli baʼzi masalalarni oddiy kompyuterlar uchun amalda imkonsiz tezlikda yechadi.</p>
+<div class="stats"><div class="stat"><strong>1981</strong><span>gʻoya: Feynman</span></div><div class="stat"><strong>2019</strong><span>“kvant ustunligi”</span></div><div class="stat"><strong>2³⁰⁰</strong><span>300 kubit holati</span></div></div>
+<button class="go" id="go">Boshlash</button></div>
+<div class="agp"><h3>Mavzular</h3><ol class="ag"><li><a href="#c0"><i>01</i>Kuchli kompyuter nima degani?</a></li><li><a href="#c1"><i>02</i>Nega kvant kompyuterini hech kim tushunmaydi?</a></li><li><a href="#c2"><i>03</i>Anʼanaviy kompyuter qanday ishlaydi?</a></li><li><a href="#c3"><i>04</i>Qubit va superpozitsiya</a></li><li><a href="#c4"><i>05</i>Kvant kompyuterining oddiy kompdan farqi</a></li><li><a href="#c5"><i>06</i>Kvant kompyuterini hayotda qanday ishlatsa boʻladi?</a></li><li><a href="#c6"><i>07</i>Kvant kompyuterining biz uchun nima foydasi bor?</a></li><li><a href="#c7"><i>08</i>Kvant kompyuteri bilan mayning qilish</a></li><li><a href="#c8"><i>09</i>Nega kvant kompyuterni xavfli deb oʻylashadi?</a></li><li><a href="#c9"><i>10</i>Kvant kompini sotib olish mumkinmi? Necha pul?</a></li><li><a href="#c10"><i>11</i>Nega kvantni uyda ishlatib boʻlmaydi?</a></li><li><a href="#c11"><i>12</i>Kvantda 10.000 FPS oʻyin? Kvant smartfonlarichi?</a></li><li><a href="#c12"><i>13</i>Kvant texnologiyasi bugun qaysi bosqichda?</a></li><li><a href="#c13"><i>14</i>Teleport va nusxalash texnologiyalari</a></li></ol></div></section>
+<section class="s d" id="c0" data-n="01" data-t="Bosh"><h2>Kuchli kompyuter nima degani?</h2><div class="cards"><div class="c"><b>Oddiy kuch</b><p>Klassik kompyuter amallarni juda tez, lekin birin-ketin bajaradi.</p></div><div class="c h"><b>Kvant kuchi</b><p>n ta kubit 2ⁿ holatni ifodalaydi: 300 kubitda 2³⁰⁰ holat — koinotdagi atomlar sonidan koʻp.</p></div><div class="c"><b>Muhim eslatma</b><p>Kvant kompyuter hamma narsada tez emas — faqat baʼzi masalalarda.</p></div></div><div class="exp"><p class="cap">Kubitlar soni oshgani sari holatlar soni 2ⁿ ga oʻsadi (n = 1 dan 10 gacha)</p><div class="ebars"><i style="--h:1.00%;--d:1"><u>2</u></i><i style="--h:1.00%;--d:2"><u>4</u></i><i style="--h:1.00%;--d:3"><u>8</u></i><i style="--h:1.56%;--d:4"><u>16</u></i><i style="--h:3.12%;--d:5"><u>32</u></i><i style="--h:6.25%;--d:6"><u>64</u></i><i style="--h:12.50%;--d:7"><u>128</u></i><i style="--h:25.00%;--d:8"><u>256</u></i><i style="--h:50.00%;--d:9"><u>512</u></i><i style="--h:100.00%;--d:10"><u>1024</u></i></div></div></section>
+<section class="s l" id="c1" data-n="02" data-t="Tushunish"><h2>Nega kvant kompyuterini hech kim tushunmaydi?</h2><div class="cards"><div class="c"><b>Sezgiga zid</b><p>Kvant dunyosi kundalik tajribamizga oʻxshamaydi.</p></div><div class="c h"><b>Superpozitsiya</b><p>Kubit oʻlchanmaguncha bir nechta holatni bir vaqtda ifodalaydi.</p></div><div class="c"><b>Chigallik</b><p>Kubitlar bogʻlanadi: birining holati ikkinchisiga bevosita taʼsir qiladi.</p></div></div></section>
+<section class="s d" id="c2" data-n="03" data-t="Anʼanaviy kompyuter"><h2>Anʼanaviy kompyuter qanday ishlaydi?</h2><div class="cards"><div class="c"><b>Bit</b><p>Maʼlumot 0 va 1 ketma-ketligida saqlanadi.</p></div><div class="c h"><b>Tranzistor</b><p>Mayda kalitlar har bir bitni 0 yoki 1 holatida ushlab turadi.</p></div><div class="c"><b>Mantiqiy amallar</b><p>Hisoblash — bitlar ustida bajariladigan mantiqiy amallar zanjiri.</p></div></div></section>
+<section class="s l hero" id="c3" data-n="04" data-t="Kubit"><div><h2>Qubit va superpozitsiya</h2><div class="cards"><div class="c"><b>Klassik bit</b><p>Faqat 0 yoki 1 holatida boʻladi.</p></div><div class="c h"><b>Kubit</b><p>0 va 1 holatlarining kombinatsiyasida boʻla oladi.</p></div></div></div><div class="lab"><h3>Bitta kubit bilan sinab koʻring</h3><p>Kubit 0 dan boshlanadi. Hadamard uni superpozitsiyaga keltiradi, oʻlchash esa 0 yoki 1 ni tanlaydi.</p>
+<svg id="bl" class="bl" viewBox="-110 -112 220 224" role="img" aria-label="Kubit holati: Blox sferasi"><circle r="90" fill="none" stroke="#4a5f88" stroke-width="2"/><ellipse rx="90" ry="26" fill="none" stroke="#4a5f88" stroke-dasharray="4 5"/><line y1="-90" y2="90" stroke="#4a5f88" stroke-dasharray="4 5"/><line id="vec" x2="0" y2="-80" stroke="#f4a83a" stroke-width="4" stroke-linecap="round"/><circle id="dot" cy="-80" r="8" fill="#f4a83a"/><text y="-96" text-anchor="middle" fill="#3dd6c6" font-size="15" font-weight="700" font-family="Arial">|0⟩</text><text y="110" text-anchor="middle" fill="#3dd6c6" font-size="15" font-weight="700" font-family="Arial">|1⟩</text></svg><div class="row"><span>0</span><div class="track"><div class="fill" id="f0" style="background:var(--teal)"></div></div><span id="p0"></span></div>
+<div class="row"><span>1</span><div class="track"><div class="fill" id="f1" style="background:var(--amber)"></div></div><span id="p1"></span></div>
+<div class="btns"><button class="main" id="bh">Hadamard</button><button id="bm">Oʻlchash</button><button id="bx">100 marta oʻlchash</button><button id="br">Qayta boshlash</button></div>
+<div class="out" id="out" aria-live="polite"></div></div></section>
+<section class="s d" id="c4" data-n="05" data-t="Farqi"><h2>Kvant kompyuterining oddiy kompdan farqi</h2><div class="sc"><table class="tb"><tr><th></th><th>Klassik</th><th>Kvant</th></tr><tr><td>Birlik</td><td>Bit: 0 yoki 1</td><td>Kubit: superpozitsiya</td></tr><tr><td>Natija</td><td>Aniq</td><td>Ehtimoliy</td></tr><tr><td>Vazifa</td><td>Umumiy maqsadli</td><td>Muayyan masalalar</td></tr></table></div></section>
+<section class="s l" id="c5" data-n="06" data-t="Hayotda"><h2>Kvant kompyuterini hayotda qanday ishlatsa boʻladi?</h2><div class="cards"><div class="c"><b>Bulut orqali</b><p>Hozirgi kvant kompyuterlarga odatda internet orqali ulanib ishlanadi.</p></div><div class="c h"><b>Kimyo va tibbiyot</b><p>Molekulalarni modellashtirish, yangi dori va materiallar.</p></div><div class="c"><b>Optimallashtirish</b><p>Logistika, moliya va murakkab rejalashtirish masalalari.</p></div></div></section>
+<section class="s d" id="c6" data-n="07" data-t="Foydasi"><h2>Kvant kompyuterining biz uchun nima foydasi bor?</h2><div class="cards"><div class="c"><b>Salomatlik</b><p>Yangi dori va davolash usullarini topishni tezlashtirishi mumkin.</p></div><div class="c h"><b>Materiallar</b><p>Yaxshiroq materiallarni oldindan modellashtirish imkoni.</p></div><div class="c"><b>Kundalik hayot</b><p>Transport, moliya va logistikada samaraliroq yechimlar.</p></div></div></section>
+<section class="s l" id="c7" data-n="08" data-t="Mayning"><h2>Kvant kompyuteri bilan mayning qilish</h2><div class="cards"><div class="c"><b>Mayning</b><p>Kripto tangalar murakkab hisob-kitoblarni yechish orqali yaratiladi.</p></div><div class="c h"><b>Grover</b><p>Qidiruvni kvadratik tezlashtiradi: N oʻrniga √N qadam.</p></div><div class="c"><b>Hozirgi holat</b><p>Amalda bugungi kvant kompyuterlar mayningda foyda bermaydi.</p></div></div></section>
+<section class="s d" id="c8" data-n="09" data-t="Xavf"><h2>Nega kvant kompyuterni xavfli deb oʻylashadi?</h2><div class="cards"><div class="c h"><b>Tahdid</b><p>Yetarlicha katta kvant kompyuter RSA va ECC shifrlarini buzishi mumkin (Shor algoritmi).</p></div><div class="c"><b>Himoya</b><p>Kvantdan keyingi kriptografiya: NIST 2024-yilda birinchi standartlarni eʼlon qildi.</p></div><div class="c h"><b>Xavf hozir</b><p>Maʼlumot bugun yigʻilib, keyinchalik ochilishi mumkin.</p></div></div></section>
+<section class="s l" id="c9" data-n="10" data-t="Sotib olish"><h2>Kvant kompini sotib olish mumkinmi? Necha pul?</h2><div class="cards"><div class="c"><b>Oʻquv qurilmalari</b><p>Kichik, tajriba uchun moʻljallangan qurilmalar mavjud.</p></div><div class="c h"><b>Yirik tizimlar</b><p>Haqiqiy kvant kompyuterlar millionlab dollar turadi.</p></div><div class="c"><b>Arzon yoʻl</b><p>Bulut orqali ulanib, kerakli vaqt uchun foydalanish mumkin.</p></div></div></section>
+<section class="s d" id="c10" data-n="11" data-t="Uyda"><h2>Nega kvantni uyda ishlatib boʻlmaydi?</h2><div class="cards"><div class="c"><b>Sovuq</b><p>Superoʻtkazuvchi kubitlar mutlaq nolga yaqin haroratgacha sovutiladi.</p></div><div class="c h"><b>Shovqin</b><p>Dekogerensiya: kubitlar tashqi shovqindan tez buziladi.</p></div><div class="c"><b>Xatolar</b><p>Xatolarni tuzatish koʻp qoʻshimcha kubit talab qiladi.</p></div></div><div class="cmp"><div><span>Kosmosning oʻzi</span><strong>2,7 K</strong></div><div class="cold"><span>Kvant kompyuter ichi</span><strong>≈ 0,015 K</strong></div><div><span>Farqi</span><strong>Kosmosdan ham sovuq</strong></div></div></section>
+<section class="s l" id="c11" data-n="12" data-t="Oʻyin"><h2>Kvantda 10.000 FPS oʻyin? Kvant smartfonlarichi?</h2><div class="cards"><div class="c"><b>Oʻyin</b><p>Kvant kompyuter grafika va FPS uchun yaratilmagan: u umumiy maqsadli emas.</p></div><div class="c h"><b>Smartfon</b><p>Sovutish va shovqinsiz muhit kerakligi uchun cho'ntakka sigʻmaydi.</p></div><div class="c"><b>Qoʻshimcha vosita</b><p>Oddiy kompyuter oddiy ishlarda qoladi, kvant esa murakkab masalalar uchun.</p></div></div></section>
+<section class="s d" id="c12" data-n="13" data-t="Bosqich"><h2>Kvant texnologiyasi bugun qaysi bosqichda?</h2><div class="cards"><div class="c"><b>Hozir</b><p>Shovqinli oraliq qurilmalar, kubitlar soni cheklangan.</p></div><div class="c h"><b>Keyingi</b><p>Xatolarga chidamli mantiqiy kubitlar.</p></div><div class="c"><b>Maqsad</b><p>Foydali masalalarda amaliy ustunlik.</p></div></div><p class="lead" style="margin:26px 0 0">Yetakchilar: IBM, Google, IonQ, Quantinuum.</p></section>
+<section class="s l" id="c13" data-n="14" data-t="Teleport"><h2>Teleport va nusxalash texnologiyalari</h2><div class="cards"><div class="c"><b>Kvant teleportatsiya</b><p>Kubitning holati uzatiladi, narsaning oʻzi emas; klassik aloqa ham kerak.</p></div><div class="c h"><b>Nusxalab boʻlmaydi</b><p>Noaniq kvant holatini aynan nusxalab boʻlmaydi (no-cloning teoremasi).</p></div><div class="c"><b>Nimaga kerak</b><p>Kvant aloqa va xavfsiz tarmoqlar uchun asos boʻladi.</p></div></div><svg class="tp" viewBox="0 0 600 120" role="img" aria-label="Kubit holati A dan B ga uzatiladi"><line x1="90" y1="60" x2="510" y2="60" stroke="currentColor" stroke-opacity=".35" stroke-width="3" stroke-dasharray="8 8"/><circle cx="60" cy="60" r="30" fill="#3dd6c6"/><circle cx="540" cy="60" r="30" fill="#f4a83a"/><text x="60" y="69" text-anchor="middle" font-size="26" font-weight="800" fill="#0f1a2b" font-family="Arial">A</text><text x="540" y="69" text-anchor="middle" font-size="26" font-weight="800" fill="#0f1a2b" font-family="Arial">B</text><circle cy="60" r="10" style="fill:var(--b)"><animate attributeName="cx" values="100;500" dur="2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite"/></circle></svg></section>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+/* kubit tajribasi */
+var a=1,b=0,r=Math.SQRT1_2;
+var tip={x:0,y:-80},anim;
+function tgt(){var A=a,B=Math.abs(b),sg=b<0?-1:1,th;if(A<0){A=-A;sg=-sg}th=2*Math.atan2(B,A);return{x:80*Math.sin(th)*sg*.85,y:-80*Math.cos(th)+20*Math.sin(th)}}
+function put(){$("vec").setAttribute("x2",tip.x);$("vec").setAttribute("y2",tip.y);$("dot").setAttribute("cx",tip.x);$("dot").setAttribute("cy",tip.y)}
+function sphere(){var t=tgt(),f={x:tip.x,y:tip.y},t0=performance.now();cancelAnimationFrame(anim);(function stp(n){var k=Math.min(1,(n-t0)/450),e=1-Math.pow(1-k,3);if(typeof RM!="undefined"&&RM)e=1;tip.x=f.x+(t.x-f.x)*e;tip.y=f.y+(t.y-f.y)*e;put();if(k<1)anim=requestAnimationFrame(stp)})(t0)}
+
+function show(){sphere();$("f0").style.width=a*a*100+"%";$("f1").style.width=b*b*100+"%";$("p0").textContent=Math.round(a*a*100)+"%";$("p1").textContent=Math.round(b*b*100)+"%"}
+function say(t){$("out").textContent=t}
+$("bh").onclick=function(){var x=(a+b)*r,y=(a-b)*r;a=x;b=y;show();say(Math.round(a*a*100)==50?"Superpozitsiya: 0 va 1 teng ehtimol bilan.":"Hadamard yana qoʻllandi — kubit 0 yoki 1 ga qaytdi.")};
+$("bm").onclick=function(){var one=Math.random()<b*b;a=one?0:1;b=one?1:0;show();say("Oʻlchandi: natija "+(one?1:0)+". Superpozitsiya yoʻq boʻldi.")};
+$("bx").onclick=function(){var n=0,i;for(i=0;i<100;i++){if(Math.random()<b*b)n++}say("100 oʻlchashda: 0 — "+(100-n)+" marta, 1 — "+n+" marta.")};
+$("br").onclick=function(){a=1;b=0;show();say("")};
+show();
+/* slaydlar */
+var S=[].slice.call(document.querySelectorAll(".s")),N=S.length,cur=0,D=[];
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+function go(i){i=Math.max(0,Math.min(N-1,i));S[i].scrollIntoView({behavior:RM?"auto":"smooth",block:"start"})}
+S.forEach(function(s,i){var d=document.createElement("button");d.title=s.getAttribute("data-t");d.setAttribute("aria-label",d.title);d.onclick=function(){go(i)};$("dots").appendChild(d);D.push(d)});
+function mark(i){cur=i;S.forEach(function(e,k){e.classList.toggle("on",k==i)});D.forEach(function(d,k){d.className=k==i?"on":""});$("no").textContent=(i+1)+" / "+N;$("bar").style.width=(N>1?i/(N-1)*100:0)+"%"}
+mark(0);
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)mark(S.indexOf(e.target))})},{rootMargin:"-50% 0px -49% 0px"});S.forEach(function(s){io.observe(s)})}
+$("pv").onclick=function(){go(cur-1)};$("nx").onclick=function(){go(cur+1)};
+document.addEventListener("keydown",function(e){
+if(e.ctrlKey||e.metaKey||e.altKey)return;
+var k=e.key,t=e.target.tagName,n=null;
+if(t=="BUTTON"&&(k==" "||k=="Enter"))return;
+if(k=="ArrowDown"||k=="PageDown"||k=="ArrowRight"||(k==" "&&!e.shiftKey))n=cur+1;
+else if(k=="ArrowUp"||k=="PageUp"||k=="ArrowLeft"||(k==" "&&e.shiftKey))n=cur-1;
+else if(k=="Home")n=0;else if(k=="End")n=N-1;
+if(n!==null){e.preventDefault();go(n)}
+});
+
+$("go").onclick=function(){go(1)};
+var cv=$("cv"),cx=cv.getContext("2d"),W=0,H=0,P=[];
+function fit(){var r=cv.parentNode.getBoundingClientRect(),d=window.devicePixelRatio||1,n;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);n=Math.max(16,Math.min(46,Math.round(W*H/30000)));while(P.length<n)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,b:Math.random()<.5?0:1,ph:Math.random()*6.28});P.length=n}
+function frame(t){var i,j,p,q,d,rr,col,g;cx.clearRect(0,0,W,H);
+for(i=0;i<P.length;i++){p=P[i];for(j=i+1;j<P.length;j++){q=P[j];d=Math.hypot(p.x-q.x,p.y-q.y);if(d<170){cx.strokeStyle="rgba(61,214,198,"+(1-d/170)*.4+")";cx.lineWidth=1;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}
+for(i=0;i<P.length;i++){p=P[i];if(!RM){p.x+=p.vx;p.y+=p.vy;if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20}
+rr=9+2.5*Math.sin(t/800+p.ph);col=p.b?"244,168,58":"61,214,198";
+g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,rr*2.6);g.addColorStop(0,"rgba("+col+",.38)");g.addColorStop(1,"rgba("+col+",0)");cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,rr*2.6,0,6.283);cx.fill();
+cx.fillStyle="rgba("+col+",.95)";cx.beginPath();cx.arc(p.x,p.y,rr*.85,0,6.283);cx.fill();
+cx.fillStyle="#0f1a2b";cx.font="700 11px Arial";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(p.b,p.x,p.y+.5)}}
+fit();
+if(RM){frame(0);window.addEventListener("resize",function(){fit();frame(0)})}
+else{window.addEventListener("resize",fit);(function loop(t){if(cur===0)frame(t);requestAnimationFrame(loop)})(0)}
+
+var fb=$("fs");function fsT(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen()}catch(e){}}
+if(!document.fullscreenEnabled)fb.style.display="none";fb.onclick=fsT;
+document.addEventListener("keydown",function(e){if((e.key=="f"||e.key=="F")&&!e.ctrlKey&&!e.metaKey&&!e.altKey)fsT()});
+})();
+</script>
+</body>
+</html>
